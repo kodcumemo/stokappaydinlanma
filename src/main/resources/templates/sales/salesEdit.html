@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragmented/fragment.html :: head('Satılmış Ürünler')"></head>
+
+<body>
+    <div th:replace="fragmented/fragment.html :: banner"></div>
+    <div th:replace="fragmented/fragment.html :: adminPanel"></div>
+    <!-- ÜST TARAF BİR STANDARTTIR HER DOSYANIN BAŞINDA OLACAK -->
+    <table>
+        <tr>
+            <th>İD NO</th>
+            <th>TARİH</th>
+            <th>ÜRÜN ADI</th>
+            <th>ADEDİ</th>
+            <th>FİYATI</th>
+            <th>İSKONTO</th>
+            <th>KDV</th>
+            <th>AÇIKLAMA</th>
+        </tr>
+        <tr>
+            <form tr:action="@{/musteriIndex/{ids}/edit (ids = ${salesListEdit.idsatisyapilan})}"
+                th:object="${salesListEdit}" method="POST">
+
+                <td><input type="text" th:value="*{idsatisyapilan}" placeholder="id nosu" disabled></td>
+                <td><input type="text" th:field="*{satistarihi}" placeholder="Tarihi" ></td>
+                <td><input type="text" th:field="*{urunAdi}" placeholder="Ürün Adı" ></td>
+
+                <td><input type="text" th:field="*{urunAdedi}" placeholder="Ürün Adedi"></td>
+                <td><input type="text" th:field="*{urunFiyati}" placeholder="Ürün Fiyatı"></td>
+                <td><input type="text" th:field="*{satisiskonto}" placeholder="İskonto"></td>
+                <td><input type="text" th:field="*{satisKdvsi}" placeholder="KDV"></td>
+                <td><input type="text" th:field="*{satisadresi}" placeholder="Açıklama"></td>
+
+                <td><input type="hidden" th:field="*{idMusteri}" placeholder="Açıklama"></td>
+                <td><input type="hidden" th:field="*{idurun}" placeholder="Açıklama"></td>
+                <td><input type="hidden" th:field="*{urunkaydi}" placeholder="Açıklama"></td>
+                
+                <td><input type="submit" value="Güncelle"><!---->
+            </form>
+        </tr>
+    </table>

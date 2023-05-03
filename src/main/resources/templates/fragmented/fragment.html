@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+    <head th:fragment="head(title)">
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title th:text="${title}"></title>
+        <style>
+            .body {background-color: rgb(208, 217, 235);}
+        </style>
+    </head >
+    <nav th:fragment="banner">
+        <div style="margin: auto; text-decoration: none; font-size: 14px; color: black; background: white;">
+            <div>
+                <a th:href="@{/home}">Ana Sayfa</a>
+            </div>
+            <div>
+                <a href="register.html">Üye Ol</a>
+                <a href="login.html">Giriş Yap</a>
+            </div>
+            <div>
+                <h2>SİPAHİOĞLU</h2>
+            </div>
+        </div>
+    </nav>
+    <nav th:fragment="adminPanel">
+        <div>
+            <a th:href="@{/musteriIndex}">Müşteriler</a>
+            <a th:href="@{/productIndex}">Ürünler</a>
+            <a th:href="@{/sales}">Cari</a>
+        </div>
+    </nav>

@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragmented/fragment.html :: head('Sipahioğlu')"></head>
+
+<body>
+    <div th:replace="fragmented/fragment.html :: banner"></div>
+    <div th:replace="fragmented/fragment.html :: adminPanel"></div>
+    <!-- ÜST TARAF BİR STANDARTTIR HER DOSYANIN BAŞINDA OLACAK -->
+    <div th:replace="fragmented/productFragment.html :: productControlBar"></div>
+    <!-- ÜST TARAF BİR STANDARTTIR PRODUCTTA OLACAK -->
+</body>
+</html>

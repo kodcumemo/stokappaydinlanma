@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragmented/fragment.html :: head('Sipahioğlu')"></head>
+
+<body>
+    <div th:replace="fragmented/fragment.html :: banner"></div>
+    <div th:replace="fragmented/fragment.html :: adminPanel"></div>
+    <!-- ÜST TARAF BİR STANDARTTIR HER DOSYANIN BAŞINDA OLACAK -->
+    <div th:replace="fragmented/productFragment.html :: productControlBar"></div>
+    <!-- ÜST TARAF BİR STANDARTTIR PRODUCTTA OLACAK -->
+    <a th:text="${asmesaj}"></a><br>
+    <table>
+        <form action="/productIndex" method="get"></form>
+        <tr>
+            <th>İD NO</th>
+            <th>ÜRÜN ADI</th>
+            <th>ADEDİ</th>
+            <th>FİYATI</th>
+        </tr>
+        <tr>
+            <th></th>
+            <th>
+                <form action="/productIndex/filterByName" method="post">
+                    <input type="text" name="urunadi" value="" placeholder="İsim Soyisim ile" autofocus
+                        style="background-color: rgb(185, 185, 185);">
+                    <input class="btnstyle" type="submit" value="Ara">
+                    <script> setInterval(100)</script>
+                </form>
+            </th>
+            <th></th>
+            <th></th>
+        </tr>
+        <tr th:each=" product: ${ products}">
+            <td ><a th:href="@{/productSales/{id}/ProductDetailSales (id = ${product.idurun})}" th:text="${product.idurun}"> </a></td>
+            <td ><a th:href="@{/productSales/{id}/ProductDetailSales (id = ${product.idurun})}" th:text="${product.urunadi}"> </a></td>
+            <td ><a th:href="@{/productSales/{id}/ProductDetailSales (id = ${product.idurun})}" th:text="${product.adedi}"> </a></td>
+            <td ><a th:href="@{/productSales/{id}/ProductDetailSales (id = ${product.idurun})}" th:text="${product.satisFiyati}"> </a></td>
+        </tr>
+        listenin sonu <br>
+        </form> form sonu <br>
+    </table>
+    table sonu <br>
+</body>
+
+</html>

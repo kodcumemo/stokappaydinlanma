@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragmented/fragment.html :: head('Sipahioğlu')"></head>
+
+<body>
+    <div th:replace="fragmented/fragment.html :: banner"></div>
+    <div th:replace="fragmented/fragment.html :: adminPanel"></div>
+    <!-- ÜST TARAF BİR STANDARTTIR HER DOSYANIN BAŞINDA OLACAK -->
+    <!--<div th:replace="fragmented/productFragment.html :: productControlBar"></div> -->
+    <!-- ÜST TARAF BİR STANDARTTIR PRODUCTTA OLACAK -->
+
+    <table>
+        <span style="width: 100%; color: brown; size: 26px; margin: auto; background-color: black;">Yeni Müşteri Kaydı</span>
+        <tr>
+            <th>MUS. NO</th>
+            <th>İSİM</th>
+            <th>ADRES</th>
+            <th>KAYIT DURUMU</th>
+        </tr>
+        <tr>
+            <form action="/musteriIndex/customerAdded" method="post">
+                <td><input type="text" name="idMusteri"  placeholder="Müşteri Numarası" autofocus style="background-color: rgb(185, 185, 185);"></td>
+                <td><input type="text" name="isim"  placeholder="İsim Soyisim" autofocus style="background-color: rgb(185, 185, 185);"></td>
+                <td><input type="text" name="adres"  placeholder="Adres" autofocus style="background-color: rgb(185, 185, 185);"> </td>
+                <td><input type="text" name="kayitdurumu" disabled placeholder="Kayıt Durumu" autofocus style="background-color: rgb(185, 185, 185);"></td>
+                <td><input class="btnstyle" type="submit"  value="Kaydet"></td> 
+            </form>
+        </tr>
+    </table>
+    </div>
+</body>
+</html>

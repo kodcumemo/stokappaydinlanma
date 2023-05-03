@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragmented/fragment.html :: head('Sipahioğlu')"></head>
+
+<body>
+    <div th:replace="fragmented/fragment.html :: banner"></div>
+    <div th:replace="fragmented/fragment.html :: adminPanel"></div>
+    <!-- ÜST TARAF BİR STANDARTTIR HER DOSYANIN BAŞINDA OLACAK -->
+    <div style="background-color: burlywood; width: 100%;">
+        <table>
+        <tr >
+            <th>İD URUN</th>
+            <th>İD MÜŞTERİ</th>
+            <th>ÜRÜN ADI</th>
+            <th>ADEDİ</th>
+            <th>FİYATI</th>
+            <th>İSKONTO</th>
+            <th>KDV</th>
+            <th>AÇIKLAMA</th>
+        </tr>
+        <div th:object="${salesObj}"></div>
+        <tr th:each=" ps: ${pfs}" >
+            <form action="/musteriIndex/salesSave" method="post">
+                <td><input type="text" name="iduruna" th:value="${prodided}" ></td>
+                <td><input type="text" name="idMusteria" th:value="${mustid}" ></td>
+                
+                <td><input type="text" name="urunAdia"  th:value="${ps.urunadi}" ></td>
+                <td><input type="text" name="urunAdedia"  th:value="${ps.adedi}" autofocus aria-selected="true"></td>
+                <td><input type="text" name="urunFiyatia"  th:value="${ps.satisFiyati}"></td>
+                <td><input type="text" name="satisiskontoa" placeholder="iskonto"></td>
+                <td><input type="text" name="satisKdvsia"  th:value="${ps.satisKdvsi}" placeholder="KDV"></td>
+                <td><input type="text" name="satisadresia"  th:value="${ps.satisadresi}" placeholder="Açıklama"></td>
+                <td><input type="submit" value="Ürün Kaydet" th:href="@{/musteriIndex/{id}/sales (id = ${mustid})}"></td>
+                
+            </form>
+        </tr>
+        </table>
+    </div>
+    </body>
+    </html>

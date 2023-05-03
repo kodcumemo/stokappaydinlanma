@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragmented/fragment.html :: head('Sipahioğlu')"></head>
+
+<body>
+    <div th:replace="fragmented/fragment.html :: banner"></div>
+    <div th:replace="fragmented/fragment.html :: adminPanel"></div>
+    <!-- ÜST TARAF BİR STANDARTTIR HER DOSYANIN BAŞINDA OLACAK -->
+    <div th:replace="fragmented/productFragment.html :: productControlBar"></div>
+    <!-- ÜST TARAF BİR STANDARTTIR PRODUCTTA OLACAK -->
+    <h1 th:text="${productadd}"></h1>
+    <div>
+        <table>
+            <tr>
+                
+                <tr>
+                    <!--<th>İD NO</th>-->  
+                    <th>ÜRÜN ADI</th>
+                    <th>FATURA</th>
+                    <th>ALINIŞI</th>
+                    <th>ADEDİ</th>
+                    <th>FİYATI</th>
+                    <th>İSKONTO</th>
+                    <th>KDV</th>
+                    <th>AÇIKLAMA</th>
+                </tr>
+                <tr >
+                    <form action="/productIndex/productAdded" method="get">
+                        <!--<td><input type="text" name="idurun" placeholder="Ürün idsi" style="width: 100px;"></td>-->
+                        <td><input type="text" name="urunadi" autofocus style="width: 200px "></td>          
+                        <td><input type="text" name="faturano" style="width: 100px;"></td>
+                        <td><input type="text" name="tutar" style="width: 100px;"></td>
+                        <td><input type="text" name="adedi" style="width: 70px;"></td>
+                        <td><input type="text" name="satisFiyati" style="width: 70px;"></td>
+                        <!--<td><input type="text" name="kayitDurumu" style="width: 100px;"></td>-->
+                        <td><input type="text" name="iskonto" disabled placeholder="iskonto" style="width: 100px;"></td>
+                        <td><input type="text" name="satisKdvsi" disabled placeholder="satisKdvsi" style="width: 100px;"></td>
+                        <td><input type="text" name="satisadresi"  placeholder="satisadresi" style="width: 100px;"></td>
+                   <!-- <td><a class="urunyazilari" th:href="@{/urundtylblg/{id} (id = ${urun.idurun})}" th:text="${urun.urunadi}"></a></td>-->
+                    <td><input type="submit" value="Ürün Kaydet" ></td>
+                </form>
+                </tr> 
+            </tr>
+        </table>
+    </div>
+    <div>
+        <table>
+            <form action="/productIndex" method="get"></form>
+            <tr>
+                <th></th>
+                <th>
+                    <form action="/productIndex/filterByName" method="post">
+                        <input type="text" name="urunadi" value="" placeholder="İsim Soyisim ile" autofocus
+                            style="background-color: rgb(185, 185, 185);">
+                        <input class="btnstyle" type="submit" value="Ara">
+                        <script> setInterval(100)</script>
+                    </form>
+                </th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr>
+                <th>İD NO</th>
+                <th>ÜRÜN ADI</th>
+                <th>ADEDİ</th>
+                <th>FİYATI</th>
+            </tr>
+            <div >
+               <tr th:each=" product: ${ products}">
+                    <td th:text="${product.idurun}"></td>
+                    <td th:text="${product.urunadi}"></td>
+                    <td th:text="${product.adedi}"></td>
+                    <td th:text="${product.satisFiyati}"></td>
+                </tr> 
+            </div>
+            
+            listenin sonu <br>
+            </form> form sonu <br>
+        </table>
+        table sonu <br>
+    </div>
+</body>
+</html>

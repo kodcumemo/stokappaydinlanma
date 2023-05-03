@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragmented/fragment.html :: head('Satılmış Ürünler')"></head>
+
+<body>
+    <div th:replace="fragmented/fragment.html :: banner"></div>
+    <div th:replace="fragmented/fragment.html :: adminPanel"></div>
+    <!-- ÜST TARAF BİR STANDARTTIR HER DOSYANIN BAŞINDA OLACAK -->
+    <div class="kayan-buton">
+        <a href="#">MÜŞTERİ</a>
+      </div>
+      
+
+    <style>
+   .kayan-buton {
+  position: relative;
+  overflow: hidden;
+}
+
+.kayan-buton a {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+.kayan-buton a:hover {
+  transform: translate(-50%, -50%) translateY(-10px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+    </style>
+</body>
+</html>

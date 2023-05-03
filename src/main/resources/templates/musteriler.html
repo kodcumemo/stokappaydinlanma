@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragmented/fragment.html :: head('Sipahioğlu')"></head>
+
+<body style="width: 90%; background-color: rgb(204, 221, 228); margin: auto;">
+    <style>
+        .yazilar {
+            color: rgb(77, 77, 77);
+            font-size: 18px;
+            text-decoration: none;
+        }
+
+        .yazilar:hover {
+            color: rgb(26, 25, 25);
+        }
+
+        .byazilar {
+            color: rgb(36, 33, 33);
+            font-size: 30px;
+            text-decoration: none;
+        }
+
+        .byazilar:hover {
+            color: rgb(82, 82, 82);
+        }
+
+        .menuin {
+            background-color: rgb(203, 214, 214);
+            width: 100%;
+            height: 200px;
+            overflow-x: hidden;
+            overflow-y: scroll;
+        }
+    </style>
+    <div th:replace="fragmented/fragment.html :: banner"></div>
+    <div th:replace="fragmented/fragment.html :: adminPanel"></div>
+    <!-- ÜST TARAF BİR STANDARTTIR HER DOSYANIN BAŞINDA OLACAK -->
+    <div><a th:href="@{musteriIndex/customerAdded}">Yeni Kayıt</a></div>
+    <div style="width: 90%; background: rgb(182, 184, 185);">
+        <div style="background-color:rgb(107, 184, 184); width: 100%;  height: 80px;"></div>
+        <table>
+            <form action="/productIndex/productAdded" method="get"></form>
+            <tr>
+                <td></td>
+                <td>
+                    <form action="/musteriIndex/filterByName" method="post">
+                        <input type="text" name="isim" value="" placeholder="İsim Soyisim ile" autofocus
+                            style="background-color: rgb(185, 185, 185);">
+                        <input type="submit" id="nameInput" value="Ara">
+                    </form>
+                </td>
+                <td>
+                    <form action="/musteriIndex/filterByAdress" method="post">
+                        <input type="text" name="adres" value="" placeholder="Adres ile" autofocus
+                            style="background-color: rgb(185, 185, 185);">
+                        <input type="submit" value="Ara">
+                    </form>
+                </td>
+                <td>
+                    <form action="/musteriIndex/filterByCustomerNo" method="post">
+                        <input type="text" name="musterino" value="" placeholder="Açıklama ile" autofocus
+                            style="background-color: rgb(185, 185, 185);">
+                        <input type="submit" value="Ara">
+                    </form>
+
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="byazilar">TARİH</td>
+                <td class="byazilar">ID</td>
+                <td class="byazilar">İSİM</td>
+                <td class="byazilar">ADRES</td>
+                <td class="byazilar">AÇIKLAMA</td>
+                <h1 th:text="${zeki}"></h1>
+            </tr>
+            <div>
+                <div class="menuic" id="greeting">
+
+                    <tr th:each="must: ${musteries}">
+                        <td><a class="yazilar" th:href="@{/musteriIndex/{id}/sales (id = ${must.idMusteri})}"
+                                th:text="${must.idMusteri}"></a></td>
+                        <td><a class="yazilar" th:href="@{/musteriIndex/{id}/sales (id = ${must.idMusteri})}"
+                                th:text="${must.idMusteri}"></a></td>
+                        <td><a class="yazilar" th:href="@{/musteriIndex/{id}/sales (id = ${must.idMusteri})}"
+                                th:text="${must.isim}"></a></td>
+                        <td><a class="yazilar" th:href="@{/musteriIndex/{id}/sales (id = ${must.idMusteri})}"
+                                th:text="${must.adres}"></a></td>
+                        <td><a class="yazilar" th:href="@{/musteriIndex/{id}/sales (id = ${must.idMusteri})}"
+                                th:text="${must.musterino}"></a></td>
+
+                    </tr>
+                </div>
+            </div>
+            <script>
+                // input alanında herhangi bir değişiklik olduğunda bu fonksiyon çağırılacak
+                const myInput = document.querySelector('input[name="isim"]');
+
+                myInput.addEventListener("input", (e) => {
+                    // here we do something
+                    console.log(e.target.value)
+                });
+            </script>
+    </div>
+
+    listenin sonu <br>
+    </form> form sonu <br>
+    </table>
+
+    table sonu <br>
+</body>
+
+</html>

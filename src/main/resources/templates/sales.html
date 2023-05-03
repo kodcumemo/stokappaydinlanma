@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragmented/fragment.html :: head('Satılmış Ürünler')"></head>
+
+<body>
+    <div th:replace="fragmented/fragment.html :: banner"></div>
+    <div th:replace="fragmented/fragment.html :: adminPanel"></div>
+    <!-- ÜST TARAF BİR STANDARTTIR HER DOSYANIN BAŞINDA OLACAK -->
+    <!-- ÜRÜNLERİN SEÇİLECEĞİ ALAN BAŞI -->
+    <table>
+        <form action="/productIndex" method="get"></form>
+        <tr>
+            <th>İD NO</th>
+            <th>MÜŞTERİ NO</th>
+            <th>ÜRÜN NO</th>
+            <th>ÜRÜN ADI</th>
+            <th>ADEDİ</th>
+            <th>FİYATI</th>
+            <th>İSKONTO</th>
+            <th>KDV</th>
+            <th>ADRES</th>
+        </tr>
+        <tr>
+                <form action="/sales/salesAddproduct" method="post">
+                    <input type="text" name="urunadi" value="" placeholder="İsim Soyisim ile" autofocus
+                        style="background-color: rgb(185, 185, 185);">
+                    <input class="btnstyle" type="submit" value="Ara">
+                    <script> setInterval(100)</script>
+                </form>
+            </th>
+            <th></th>
+            <th></th>
+        </tr>
+        <tr th:each=" product: ${ productsSales}">
+            <td th:text="${product.idurun}"></td>
+            <td th:text="${product.urunadi}"></td>
+            <td th:text="${product.adedi}"></td>
+            <td th:text="${product.satisFiyati}"></td>
+        </tr>
+        listenin sonu <br>
+        </form> form sonu <br>
+    </table>
+    <!-- ÜRÜNLERİN SEÇİLECEĞİ ALAN SONU -->
+    
+</body>
+</html>

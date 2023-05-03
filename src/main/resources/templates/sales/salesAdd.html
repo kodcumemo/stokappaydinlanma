@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragmented/fragment.html :: head('Sipahioğlu')"></head>
+
+<body>
+    <style>
+        .mavikaydetbutonu { color: rgb(235, 249, 253); background-color: rgb(6, 98, 204); border-radius: 15%; border: solid; }
+        .mavikaydetbutonu:hover { color: rgb(235, 249, 253); background-color: rgb(2, 43, 90); border-radius: 15%; border: solid; }
+        .urunyazilari { color: rgb(2, 56, 87); text-decoration: none; }
+        .urunyazilari:hover { color: rgb(10, 127, 148); }
+        .tutaryazilari { color: aliceblue; size: 24px; text-decoration: none; }
+        .tutaryazilari:hover {color: aqua;}
+        .anim-button-red { background-color: red; color: white; padding: 1px; border: none; border-radius: 5px; font-size: 16px; transition: background-color 0.5s, color 1s; }
+        .anim-button-red:hover { background-color: orange; color: black; }
+        .anim-button-blue { background-color: blue; color: white; padding: 1px; border: none; border-radius: 5px; font-size: 16px; transition: background-color 0.5s, color 1s; }
+        .anim-button-blue:hover { background-color: turquoise; color: black; }
+        .anim-button-green { background-color: green; color: white; padding: 1px; border: none; border-radius: 5px; font-size: 16px; transition: background-color 0.5s, color 1s; }
+        .anim-button-green:hover { background-color: greenyellow; color: black; }
+    </style>
+    <div th:replace="fragmented/fragment.html :: banner"></div>
+    <div th:replace="fragmented/fragment.html :: adminPanel"></div>
+    <!-- ÜST TARAF BİR STANDARTTIR HER DOSYANIN BAŞINDA OLACAK -->
+   <!-- <div th:replace="fragmented/productFragment.html :: productControlBar"></div> -->
+    <!-- ÜST TARAF BİR STANDARTTIR PRODUCTTA OLACAK -->
+    <!--     MÜŞTERİ BİLGİLERİNİN GÖRÜNTÜLENECEĞİ ALAN  BAŞI -->
+    salesAdd.html'desin
+    
+        <tr th:each="ps : ${productsSales}">
+            <td><a th:text="${ps.urunAdi}"></a></td>Lütfen çalışırmısın ?
+        </tr>
+    </div>
+    <!--     MÜŞTERİ BİLGİLERİNİN GÖRÜNTÜLENECEĞİ ALAN  SONU -->
+
+<!--     ÜRÜNLERİN FİYAT TOPLAMLARININ GÖRÜNTÜLENECEĞİ ALAN  BAŞI -->
+<div style=" background-color: rgb(41, 71, 75); width: 100%; height: 60px;">
+    <table>
+       <tr >
+           <th>FİYATI</th>
+           <th>İSKONTOLU</th>
+           <th >KDV</th>
+           <th>TOPLAM</th>
+       </tr>
+       <tr >
+           <td class="tutaryazilari" th:text="${sTopTutar}"></td>
+           <td class="tutaryazilari" th:text="${topIskontolu}"></td>
+           <td class="tutaryazilari" th:text="${topKdv}"></td>
+           <td class="tutaryazilari" th:text="${topKdvli}"></td>
+
+       </tr>
+       
+
+   </table>
+   </div>
+   <div>
+    <div style="width: 98%; min-height: 10px; height: auto; margin: 2px auto;">
+        <div th:object="${musteri}"style="margin: auto;" >
+            <form action="/addmust" method="post">
+                <input type="text" style="background-color: cadetblue; color: black;" name="isim" disabled th:field="*{isim}" >
+                <input type="text" style="background-color: cadetblue; color: black;" name="adres" disabled th:field="*{adres}">
+                <input type="text" style="background-color: cadetblue; color: black;"name="isMusteri" disabled  th:field="*{idMusteri}">
+                <input type="button" value="Kaydet">
+            </form>
+        </div>
+   </div>
+<div style="background-color:rgb(203, 214, 214); width: 100%;  height: 200px; overflow-x: hidden; overflow-y: scroll;">
+<table>
+   <tr>
+       <tr>
+        <th>İD</th>
+           <th>TARİH</th>
+            <!--<th>İD</th>-->
+           <!--<th>MÜŞTERİSİ</th>-->
+           <th>ÜRÜN ADI</th>
+           <th>ADEDİ</th>
+           <th>FİYATI</th> 
+           <th>TOPLAM</th>
+           <th>TUTARI</th>
+           <th>İSKONTOLU</th>
+           <th>KDVLİ</th>
+           <th>İŞLEM</th>                 
+       </tr>
+       
+       <!-- Satışı Yapılan Ürünler -->
+       <div>
+
+       
+       
+       <tr th:each=" syoy : ${salesList}">
+           <td><input type="text" name="" th:value="${syoy.idsatisyapilan}" disabled style="width: 50px;"></td>
+           <td><input type="text" name="" th:value="${syoy.satistarihi}" disabled></td>
+           <!--<td><input type="text" name="" th:value="${syoy.idsatisyapilan}" disabled></td>-->
+           <!--<td><input type="text" name="" th:value="${syoy.idMusteri}" disabled></td>-->
+           <td><input type="text" name="" th:value="${syoy.urunAdi}" disabled></td>
+           <td><input type="text" name="" th:value="${syoy.urunAdedi}" style="width: 50px;"></td>
+           <td><input type="text" name="" th:value="${syoy.urunFiyati}" style="width: 50px;"></td>
+           <td><input type="text" name="" th:value="${syoy.urunAdedi * syoy.urunFiyati}" style="width: 50px;"></td>
+           <td><input type="text" name="" th:value="${syoy.urunAdedi * syoy.urunFiyati /100*(syoy.urunAdedi * syoy.urunFiyati)}" style="width: 50px;"></td>
+           <td><input type="text" name="" th:value="${sKdvli}" style="width: 50px;"></td>
+
+
+           <!--- - - - - - - - - - - - - - - - -Güncelle - - - - - - - - - - - - - - - - - - --->
+           <form th:action="@{/musteriIndex/{ids}/edit (ids = ${syoy.idsatisyapilan})}" method="get">
+            <td><input type="submit" value="Güncelle" class="anim-button-blue"></td>
+            </form>
+            <!--- - - - - - - - - - - - - - - - Sil - - - - - - - - - - - - - - - - - - - --->
+            
+           <form th:action="@{/musteriIndex/{ids}/deleteSales (ids = ${syoy.idsatisyapilan})}" method="get">
+            <td><input type="submit" value="Sil" class="anim-button-red"></td>
+            </form>
+            <!--- - - - - - - - - - - - - - - - Kaydet - - - - - - - - - - - - - - - - - - - --->
+           <form th:action="@{/musteriIndex/{ids}/edit (ids = ${syoy.idsatisyapilan})}" method="get">
+           <td><input type="submit" value="Kaydet" class="anim-button-green"></td>
+           </form>
+       </tr>
+       
+           </form>
+    </div>
+       
+   </tr>
+</table>
+</div>
+<!--  SATILMIŞ ÜRÜNLERİN GÖRÜNTÜLENECEĞİ ALAN SONU  -->
+
+<!-- ÜRÜNLERİN SEÇİLECEĞİ ALAN BAŞI -->
+<div style=" background-color: rgb(41, 71, 75); width: 100%; height: 60px;">
+    <form action="/productIndex/filterByName" method="post">
+        <input type="text" name="urunadi" value="" placeholder="İsim Soyisim ile" autofocus
+            style="background-color: rgb(185, 185, 185);">
+        <input class="btnstyle" type="submit" value="Ara">
+    <div style="background-color:rgb(203, 214, 214); width: 100%;  height: 250px; overflow-x: hidden; overflow-y: scroll;">
+    
+<table>
+    <form action="/productIndex" method="get"></form>
+    <tr>
+        <th>İD NO</th>
+        <th>ÜRÜN ADI</th>
+        <th>ADEDİ</th>
+        <th>FİYATI</th>
+    </tr>
+    <tr th:each=" product: ${ productSalesList}" th:href="@{/productSales/{id}/ProductDetailSales (id = ${product.idurun})}"s >
+            <td ><a th:href="@{/productSales/{id}/ProductDetailSales (id = ${product.idurun})}" th:text="${product.idurun}" class="urunyazilari"></a></td>
+            <td ><a th:href="@{/productSales/{id}/ProductDetailSales (id = ${product.idurun})}" th:text="${product.urunadi}" class="urunyazilari"></a></td>
+            <td ><a th:href="@{/productSales/{id}/ProductDetailSales (id = ${product.idurun})}" th:text="${product.adedi}" class="urunyazilari"></a></td>
+            <td ><a th:href="@{/productSales/{id}/ProductDetailSales (id = ${product.idurun})}" th:text="${product.satisFiyati}" class="urunyazilari"></a></td>
+    </tr>
+    listenin sonu <br>
+    </form> form sonu <br>
+</table></div>
+</div>
+<!-- ÜRÜNLERİN SEÇİLECEĞİ ALAN SONU -->
+</body>
+</html>
